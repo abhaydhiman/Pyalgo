@@ -15,3 +15,16 @@ def my_func(arr):
 
 ls = [0, 1, 0, 1, 0, 0, 1, 1, 1, 0]
 print(my_func(ls))
+
+# Solution number 2nd
+
+def func_number_second(arr):
+    length = len(arr)
+    counter_1 = arr.count(1)
+    counter_0 = length - counter_1
+    
+    ls = [0]*(counter_0) + [1]*(counter_1)
+    
+    return ls
+
+print(func_number_second(ls))
