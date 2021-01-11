@@ -33,6 +33,18 @@ class Queue:
         if self.front == None:
             self.rear = None
     
+    def reverse(self):
+        start = self.front
+        stack = []
+        
+        while start:
+            stack.append(start.data)
+            self.dequeue()
+            start = start.next
+        
+        for i in range(len(stack) - 1, -1 , -1):
+            self.enqueue(stack[i])
+    
     def display(self):
         temp = self.front
         
@@ -50,4 +62,7 @@ obj.enqueue(30)
 obj.enqueue(40)
 obj.enqueue(10)
 obj.dequeue()
+obj.display()
+print()
+obj.reverse()
 obj.display()
