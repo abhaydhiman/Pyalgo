@@ -44,45 +44,24 @@ class LinkedList:
     def addOne(self):
         self.reverse()
         temp = self.start
-        res = temp.data + 1
-        ans = res//10
-        prev = False
+        carry = 0
+        prev = None
+        temp.data += 1
         
-        if ans < 1:
-            carry = False
-        else:
-            carry = True
-        
-        while temp:
-            if carry:
-                if not prev:
-                    ouch = temp.data + 1
-                    prev = True
-                else:
-                    ouch = temp.data + 1
-            else:
-                if not prev:
-                    ouch = temp.data + 1
-                    prev = True
-                else:
-                    ouch = temp.data
-            
-            if ouch // 10 < 1:
-                temp.data = ouch
-                carry = False
-            else:
-                temp.data = 0
-                carry = True
+        while temp and (temp.data > 9 or carry > 0):
+            temp.data += carry
+            carry = temp.data // 10
+            temp.data = temp.data % 10
             temp = temp.next
         
-        if self.head.data == 0:
+        if carry != 0:
             self.insert(1)
         self.reverse()
 
 
 head = LinkedList()
-head.insert(1)
-head.insert(2)
+head.insert(9)
+head.insert(9)
 head.insert(9)
 head.insert(9)
 
