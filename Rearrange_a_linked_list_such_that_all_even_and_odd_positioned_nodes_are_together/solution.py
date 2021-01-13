@@ -38,8 +38,9 @@ class LinkedList:
             temp = temp.next
             count += 1
         
-        for i in ls:
-            print(i, end=' ')
+        self.head = self.rear = None
+        for items in ls:
+            self.insert(items)
 
 def display(Node):
     temp = Node.head
@@ -57,5 +58,7 @@ for i in range(1, 7):
 display(linked_list)
 print()
 
-print('After Separation:- ')        # Currently O(n) in both time and space; not of linked list object.
+print('After Separation:- ')        # Currently O(n) in both time and space; linked list object.
 linked_list.separator()
+display(linked_list)
+print()
