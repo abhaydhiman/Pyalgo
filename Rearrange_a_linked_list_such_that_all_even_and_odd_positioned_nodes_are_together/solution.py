@@ -22,25 +22,18 @@ class LinkedList:
         self.length += 1
     
     def separator(self):
-        ls = [None]*self.length
-        mid = (self.length // 2) + (self.length % 2)
-        start = 0
         temp = self.head
+        length = self.length
         count = 1
         
-        while temp:
-            if count % 2 == 0:
-                ls[mid] = temp.data
-                mid += 1
+        while count < length:
+            if count % 2 != 0:
+                item = temp.next.data
+                temp.next = temp.next.next
+                self.insert(item)
             else:
-                ls[start] = temp.data
-                start += 1
-            temp = temp.next
+                temp = temp.next
             count += 1
-        
-        self.head = self.rear = None
-        for items in ls:
-            self.insert(items)
 
 def display(Node):
     temp = Node.head
@@ -52,13 +45,13 @@ def display(Node):
 
 linked_list = LinkedList()
 
-for i in range(1, 7):
+for i in range(1, 8):
     linked_list.insert(i)
 
 display(linked_list)
 print()
 
-print('After Separation:- ')        # Currently O(n) in both time and space; linked list object.
+print('After Separation:- ')        # Currently O(n) in time and no extra space; linkedlist object.
 linked_list.separator()
 display(linked_list)
 print()
