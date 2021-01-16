@@ -21,5 +21,5 @@ def my_func(arr):
     return max_diff
 
 
-ls = [7, 9, 5, 6, 3, 2]
+ls = [2, 1, 4]
 print(my_func(ls))
