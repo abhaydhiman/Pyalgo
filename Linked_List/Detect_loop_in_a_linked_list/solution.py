@@ -44,6 +44,21 @@ def loop_using_hash(node):          # O(n) and O(n) in both time and space
     print("Loop Does Not Exist!!")
 
 
+def loop_using_floyd_cycle(node):
+    slow = node.head
+    fast = node.head
+    
+    while slow and fast.next and fast:
+        slow = slow.next
+        fast = fast.next.next
+        
+        if slow == fast:
+            print("Loop Exist!!")
+            return
+    
+    print("Loop Does Not Exist!!")
+
+
 linked_list = LinkedList()
 first = Node(1)
 second = Node(2)
@@ -60,3 +75,4 @@ fifth.next = second
 
 check_loop(linked_list)
 loop_using_hash(linked_list)
+loop_using_floyd_cycle(linked_list)
