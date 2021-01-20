@@ -26,6 +26,24 @@ def check_loop(node):
     print("Loop Does Not Exist!!")
 
 
+def loop_using_hash(node):          # O(n) and O(n) in both time and space
+    temp = node.head
+    h = set()
+    
+    if temp == None:
+        print("Empty!!")
+        return
+    
+    while temp:
+        if temp in h:
+            print("Loop Exist!!")
+            return
+        
+        h.add(temp)
+        temp = temp.next
+    print("Loop Does Not Exist!!")
+
+
 linked_list = LinkedList()
 first = Node(1)
 second = Node(2)
@@ -41,3 +59,4 @@ forth.next = fifth
 fifth.next = second
 
 check_loop(linked_list)
+loop_using_hash(linked_list)
