@@ -26,18 +26,43 @@ class LinkedList:
             return
 
 
+
+def sortedMerge(a, b):
+    result = None
+    
+    if a == None:
+        return b
+    if b == None:
+        return a
+    
+    if a.data <= b.data:
+        result = a
+        result.down = sortedMerge(a.down, b)
+    else:
+        result = b
+        result.down = sortedMerge(a, b.down)
+    
+    result.right = None
+    return result
+
+
+def flatter(node):
+    if node == None or node.right == None:
+        return node
+    
+    return sortedMerge(node, flatter(node.right))
+
+
 def display(Node):
     temp = Node.head
     
     while temp:
-        print(temp.data, end='->')
+        print(temp.data, end=' ==> ')
         temp_down = temp.down
         
-        print('{', end='')
         while temp_down:
-            print(temp_down.data, end='-> ')
+            print(temp_down.data, end=' ---> ')
             temp_down = temp_down.down
-        print('} --> ', end='')
         temp = temp.right
 
 
@@ -56,6 +81,11 @@ linked_list.insert(45, 'down')
 linked_list.insert(40, 'down')
 linked_list.insert(35, 'down')
 
+
+display(linked_list)
+print()
+
+flatter(linked_list.head)
 
 display(linked_list)
 print()
