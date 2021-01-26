@@ -12,11 +12,7 @@ def printInorder(node):
     else:
         printInorder(node.left)
         print(node.val, end=' ')
-        
         right_node = printInorder(node.right)
-        
-        if right_node is not None:
-            print(right_node.val, end=' ')
 
 
 def preOrder(node):
@@ -25,10 +21,16 @@ def preOrder(node):
     else:
         print(node.val, end=' ')
         left_node = preOrder(node.left)
-        
         right_node = preOrder(node.right)
-        if right_node is not None:
-            print(right_node.val, end=' ')
+
+
+def postOrder(node):
+    if node == None:
+        return
+    else:
+        left_node = postOrder(node.left)
+        right_node = postOrder(node.right)
+        print(node.val, end=' ')
 
 root = Node(1)
 root.left = Node(2)
@@ -41,3 +43,7 @@ printInorder(root)
 print()
 
 preOrder(root)
+print()
+
+postOrder(root)
+print()
