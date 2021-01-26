@@ -19,11 +19,25 @@ def printInorder(node):
             print(right_node.val, end=' ')
 
 
-root = Node(10)
-root.left = Node(20)
-root.right = Node(30)
-root.left.left = Node(40)
-root.left.right = Node(60)
-root.right.left = Node(50)
+def preOrder(node):
+    if node == None:
+        return
+    else:
+        print(node.val, end=' ')
+        left_node = preOrder(node.left)
+        
+        right_node = preOrder(node.right)
+        if right_node is not None:
+            print(right_node.val, end=' ')
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right.left = Node(6)
 
 printInorder(root)
+print()
+
+preOrder(root)
